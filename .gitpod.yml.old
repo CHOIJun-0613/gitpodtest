@@ -1,0 +1,27 @@
+image: gitpod/workspace-full
+
+tasks:
+  - name: set timezone
+    init: |
+      sudo apt update
+      sudo apt install -y tzdata
+      sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+    command: date
+ 
+  - name: MySql setup
+    init: |
+      sudo apt-get update
+      sudo apt-get install -y mysql-server
+      sudo service mysql start
+      mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
+    command: |
+      echo "MySQL started!"
+
+ports:
+  - port: 3306
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - VMware.vscode-spring-boot
+    - vscjava.vscode-java-pack
