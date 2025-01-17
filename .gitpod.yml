@@ -8,7 +8,6 @@ tasks:
       sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
     command: |
       date
-
   - name: MySQL install
     init: |
       echo 'MySQL install' 
