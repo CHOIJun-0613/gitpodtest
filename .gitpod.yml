@@ -1,0 +1,7 @@
+tasks:
+  - init: |
+      sudo apt update
+      sudo apt install -y mysql-server
+      sudo service mysql start
+    command: echo "MySQL started!"
+  
