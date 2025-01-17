@@ -11,8 +11,8 @@ tasks:
   - name: MySQL install
     init: |
       echo 'MySQL install' 
-      sudo apt-get update
-      sudo apt-get install -y mysql-sever
+      sudo apt update
+      sudo apt install -y mysql-sever
       sudo service mysql start
       mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
     command: |
