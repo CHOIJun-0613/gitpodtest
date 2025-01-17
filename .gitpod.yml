@@ -1,20 +1,28 @@
 # List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
-  - name: Script Task
+  - name: Timezone update
     init: |
-      echo 'init script' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+      echo 'set Timezone' 
       sudo apt update
       sudo apt install -y tzdata
       sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
     command: |
-      echo 'start script'
       date
+
+  - name: MySQL install
+    init: |
+      echo 'MySQL install' 
+      sudo apt-get update
+      sudo apt-get install -y mysql-sever
+      sudo service mysql start
+    command: |
+      echo 'MySQL is running'
+
 
 # List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
 ports:
-  - name: Frontend
-    description: Port 3000 for the frontend
-    port: 3000
+  - name: MySQL DB port
+    description: Port 3306 for the MySQL server
+    port: 3306
     onOpen: open-preview
 
-# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
