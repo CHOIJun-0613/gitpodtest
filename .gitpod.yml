@@ -1,15 +1,23 @@
 tasks:
-  - name: Timezone update
-    before: |
-      echo 'set Timezone' 
-      sudo apt-get update
-      sudo apt-get install -y tzdata
-    init: sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-    command: date
-    openMode: split-left
- 
-vscode:
-  extensions:
-    - VMware.vscode-spring-boot
-    - vscjava.vscode-java-pack
+  - name: MySQL install
+    init: |
+      echo 'MySQL install' 
+      sudo apt update
+      sudo apt install -y rsync
+      sudo apt install -y mysql-sever
+      sudo mkdir -p /workspace/mysql
+      sudo chown -R mysql:mysql /workspace/mysql
+      sudo rsync -av /var/lib/mysql/ /workspace/mysql/
+      sudo service mysql start
+      mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
+    command: |
+      sudo service mysql status
+
+
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: MySQL DB port
+    description: Port 3306 for the MySQL server
+    port: 3306
+    onOpen: open-preview
 
