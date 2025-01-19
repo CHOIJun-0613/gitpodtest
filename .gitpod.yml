@@ -14,3 +14,7 @@ tasks:
       sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime 
     command: date
     openMode: split-left
+  - name: MySQL_Client 
+    init: |
+      sudo apt update
+      sudo apt install -y mysql-client
