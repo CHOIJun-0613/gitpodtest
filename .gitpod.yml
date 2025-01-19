@@ -1,18 +1,18 @@
 tasks:
   - name: MySQL install
-    before: |
+    init: >
       echo 'MySQL install' 
       sudo apt update
       sudo apt install -y rsync
       sudo apt-get update
-    init: |
       sudo apt-get install -y mysql-sever
       sudo mkdir -p /workspace/mysql
       sudo chown -R mysql:mysql /workspace/mysql
       sudo rsync -av /var/lib/mysql/ /workspace/mysql/
       sudo service mysql start
-      mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
+      
     command: 
+      mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
       sudo service mysql status
     openMode: split-right
 
