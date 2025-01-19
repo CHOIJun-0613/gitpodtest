@@ -1,12 +1,12 @@
 tasks:
   - name: MySQL install
-    before: >
+    before: |
       echo 'MySQL install' 
       sudo apt update
       sudo apt install -y rsync
       sudo apt-get update
-      sudo apt-get install -y mysql-sever
     init: |
+      sudo apt-get install -y mysql-sever
       sudo mkdir -p /workspace/mysql
       sudo chown -R mysql:mysql /workspace/mysql
       sudo rsync -av /var/lib/mysql/ /workspace/mysql/
