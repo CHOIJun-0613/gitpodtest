@@ -14,3 +14,11 @@ tasks:
       sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime 
     command: date
     openMode: split-left
+ 
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: MySQL DB port
+    description: Port 3306 for the MySQL server
+    port: 3306
+    onOpen: open-preview
+
