@@ -2,11 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: MySQL 
-    init: |
-      docker-compose up -d
-    command: echo "Containers are up and running!"
-    openMode: split-right
   - name: Timezone
     init: |
       sudo apt-get update
@@ -18,4 +13,9 @@ tasks:
     init: |
       sudo apt update
       sudo apt install -y mysql-client
-    openMode: split-left      
+    openMode: split-right
+  - name: MySQL 
+    init: |
+      docker-compose up -d
+    command: echo "Containers are up and running!"
+    openMode: tab-after    
