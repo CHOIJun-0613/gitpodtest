@@ -2,11 +2,12 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: |
+  - name: MySQL 
+    init: |
       docker-compose up -d
     command: echo "Containers are up and running!"
     openMode: split-right
-  - name: Timezon set
+  - name: Timezone
     init: |
       sudo apt-get update
       sudo apt-get install -y tzdate
