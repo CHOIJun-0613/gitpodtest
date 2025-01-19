@@ -1,18 +1,20 @@
 tasks:
   - name: MySQL install
-    init: |
+    before: >
       echo 'MySQL install' 
       sudo apt update
       sudo apt install -y rsync
       sudo apt-get update
       sudo apt-get install -y mysql-sever
+    init: |
       sudo mkdir -p /workspace/mysql
       sudo chown -R mysql:mysql /workspace/mysql
       sudo rsync -av /var/lib/mysql/ /workspace/mysql/
       sudo service mysql start
       mysql -e "CREATE DATABASE IF NOT EXISTS my_database;"
-    command: |
+    command: 
       sudo service mysql status
+    openMode: split-right
 
 
 # List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
