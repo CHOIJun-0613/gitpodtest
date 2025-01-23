@@ -13,7 +13,7 @@ tasks:
     command: |
       mysql --version
     openMode: split-right
-  - name: terminal 
+  - name: My Work 
     command: |
       date
     openMode: tab-after
