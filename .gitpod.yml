@@ -2,20 +2,19 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Timezone
+  - name: MySQL Server
     init: |
-      sudo apt-get update
-      sudo apt-get install -y tzdate
-      sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime 
-    command: date
-    openMode: split-left
-  - name: MySQL_Client 
-    init: |
-      sudo apt update
-      sudo apt install -y mysql-client
-    openMode: split-right
-  - name: MySQL 
-    init: |
+      docker pull mysql:8.0
+    command: |
       docker-compose up -d
-    command: echo "Containers are up and running!"
-    openMode: tab-after    
+      docker ps
+    openMode: split-left
+  - name: MySQL Client 
+    command: |
+      mysql --version
+    openMode: split-right
+  - name: terminal 
+    command: |
+      date
+    openMode: tab-after
+
